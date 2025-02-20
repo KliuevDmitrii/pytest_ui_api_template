@@ -10,3 +10,5 @@ class AuthPage:
     def go(self):
         self.__driver.get(self.__url)
 
+        
+
