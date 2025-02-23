@@ -1,0 +1,26 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support.ui import WebDriverWait 
+from selenium.webdriver.support import expected_conditions as EC
+
+class MainPage:
+
+    def __init__(self, driver: WebDriver) -> None:
+        self.__driver = driver
+
+    def get_current_url(self) -> str:
+        return self.__driver.current_url
+    
+    def open_menu(self):
+        WebDriverWait(self.__driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-testid='header-member-menu-button']"))
+            ).click()
+        
+    def get_account_info(self) -> list[str]:
+        container = WebDriverWait(self.__driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div.TyNFo3ay3iQKOz"))
+        )
+        name = container.find_element(By.CSS_SELECTOR, "div.lzFtVDCea8Z9jO").text
+        email = container.find_element(By.CSS_SELECTOR, "div.Ej7WGzTnvdxL7I").text
+
+        return [name, email]
