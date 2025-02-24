@@ -13,5 +13,6 @@ def browser():
         browser.implicitly_wait(4)
         browser.maximize_window()
 
+    with allure.step("Закрыть браузер"):
         yield browser
         browser.quit()
