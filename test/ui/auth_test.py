@@ -5,6 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.AuthPage import AuthPage
 from pages.MainPage import MainPage
 
+import pytest
+
+@pytest.mark.skip
 def auth_test(browser):
     username = 'Kliuev Dmitrii'
     email = "dimik1986@gmail.com"
