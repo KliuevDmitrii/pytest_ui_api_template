@@ -2,6 +2,8 @@ allure*
 allure-report/
 allure-files/
 
+test_data.json
+
 .pytest_cache
 __pycache__
 
