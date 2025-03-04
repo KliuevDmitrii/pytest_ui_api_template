@@ -1,21 +1,22 @@
 import allure
+import pytest
+
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 
 from pages.AuthPage import AuthPage
 from pages.MainPage import MainPage
 
-import pytest
 
-@pytest.mark.skip
-def auth_test(browser):
-    username = 'Kliuev Dmitrii'
-    email = "dimik1986@gmail.com"
-    password = "di19ma86K@"
+def auth_test(browser, test_data: dict):
+    username = test_data.get("username")
+    email = test_data.get("email")
+    password = test_data.get("pass")
+
     auth_page = AuthPage(browser)
     auth_page.go()
     auth_page.login_as(email, password)
-    WebDriverWait(browser, 15).until(EC.url_contains("kliuev_dmitrii/boards"))
+    WebDriverWait(browser, 20).until(EC.url_contains("kliuev_dmitrii/boards"))
 
     main_page = MainPage(browser)
     main_page.open_menu()

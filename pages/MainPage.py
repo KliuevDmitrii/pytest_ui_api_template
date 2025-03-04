@@ -4,10 +4,15 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 
+from configuration.ConfigProvider import ConfigProvider
+from testdata.DataProvider import DataProvider
+
 class MainPage:
 
     def __init__(self, driver: WebDriver) -> None:
         self.__driver = driver
+        url = ConfigProvider().get("ui", "base_url")
+
 
     @allure.step("Получить текущий URL")
     def get_current_url(self) -> str:

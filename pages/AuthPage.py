@@ -4,10 +4,13 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 
+from configuration.ConfigProvider import ConfigProvider
+
 class AuthPage:
 
     def __init__(self, driver: WebDriver) -> None:
-        self.__url = "https://id.atlassian.com/login?application=trello&continue=https%3A%2F%2Ftrello.com%2Fauth%2Fatlassian%2Fcallback%3FreturnUrl%3D%26display%3D%26aaOnboarding%3D%26updateEmail%3D%26traceId%3D%26ssoVerified%3D%26createMember%3D%26jiraInviteLink%3D"
+        url = ConfigProvider().get("ui", "base_url")
+        self.__url = url
         self.__driver = driver
     
     @allure.step("Перейти на страницу авторизации")

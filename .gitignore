@@ -472,7 +472,3 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,test
-
-.env
-config.json
-api_keys.py
