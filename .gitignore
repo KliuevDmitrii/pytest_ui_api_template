@@ -3,7 +3,9 @@ allure-report/
 allure-files/
 
 test_data.json
+
 test_config.ini
+
 config.ini
 .env
 
